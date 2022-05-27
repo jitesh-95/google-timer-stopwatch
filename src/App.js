@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import Stopwatch from "./components/Stopwatch";
+import Timer from "./components/Timer";
+import "./App.css";
+import React, { useState } from "react";
+
+let className = "b-border";
+let className2 = "";
 
 function App() {
+  const [toggle, setToggle] = useState(true);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <div className="heading">
+        <h3
+          onClick={() => {
+            setToggle(!toggle);
+            className = "b-border";
+            className2 = "";
+          }}
+          className={className}
         >
-          Learn React
-        </a>
-      </header>
+          {" "}
+          Timer
+        </h3>
+        <h3
+          onClick={() => {
+            setToggle(!toggle);
+            className = "";
+            className2 = "b-border";
+          }}
+          className={className2}
+        >
+          Stopwatch
+        </h3>
+      </div>
+      <div className="showcomponent">{toggle ? <Timer /> : <Stopwatch />}</div>
     </div>
   );
 }
